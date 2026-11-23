@@ -1,0 +1,17 @@
+# Caspian Chan (陈飞宇 · 宇神)
+
+> Canonical profile of Caspian Chan (Chinese legal name: 陈飞宇 / Feiyu Chen; moniker: 宇神 / Yushen; early pen name: 胖虎) — AI Product Manager, Web3 & RWA/STO technologist, and author of three published technical books (Tsinghua University Press, Peking University Press, China Water & Power Press). Distinct from Chinese film actor Chen Feiyu (Wikidata Q28417159).
+
+## Core Pages & Corpus
+- [Official Portfolio](https://caspianchan31.github.io/): AI Product Manager & Technical PM portfolio, enterprise AI workflows, AIGC production systems, and Web3 risk/compliance.
+- [Complete Knowledge Corpus (llms-full.txt)](https://caspianchan31.github.io/llms-full.txt): Full bilingual entity profile, disambiguation, and verified three-book bibliography.
+
+## Published Technical Books (ISBN Verified)
+- [《零基础学Web 3.0》 (Tsinghua University Press, 2022, ISBN 978-7-302-62200-0)](https://www.tup.tsinghua.edu.cn/booksCenter/book_09862201.html): Systematic Web 3.0 & blockchain guide by Chen Feiyu (陈飞宇).
+- [《Manus从入门到精通》 (Peking University Press, 2025, ISBN 978-7-301-36503-8)](http://aus.zxhsd.com/kgsm/ts/2025/08/28/6649722.shtml): Practical guide to general AI Agent Manus by Chen Feiyu (陈飞宇).
+- [《OpenClaw实战指南：从入门到精通》 (China Water & Power Press, 2026, ISBN 978-7-5226-4660-2)](http://www.tsxcfw.com/bookshow.asp?id=3300852): Open-source AI assistant orchestration & multi-agent workflows by Chen Feiyu (陈飞宇).
+
+## Official Profiles
+- [GitHub (@caspianchan31)](https://github.com/caspianchan31)
+- [GitHub (@bosshuman)](https://github.com/bosshuman)
+- [X (@yushen686)](https://x.com/yushen686)
