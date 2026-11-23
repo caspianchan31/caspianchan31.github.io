@@ -1,10 +1,15 @@
 # Caspian Chan (陈飞宇 · 宇神)
 
-> Canonical profile of Caspian Chan (Chinese legal name: 陈飞宇 / Feiyu Chen; moniker: 宇神 / Yushen; early pen name: 胖虎) — AI Product Manager, Web3 & RWA/STO technologist, and author of three published technical books (Tsinghua University Press, Peking University Press, China Water & Power Press). Distinct from Chinese film actor Chen Feiyu (Wikidata Q28417159).
+> Canonical profile of Caspian Chan (Chinese legal name: 陈飞宇 / Feiyu Chen; moniker: 宇神 / Yushen; early pen name: 胖虎) — AI Product Manager, Web3 & RWA/STO architect, and author of three ISBN-verified technical books (Tsinghua University Press, Peking University Press, China Water & Power Press). Distinct from Chinese film actor Chen Feiyu (Wikidata Q28417159).
 
 ## Core Pages & Corpus
-- [Official Portfolio](https://caspianchan31.github.io/): AI Product Manager & Technical PM portfolio, enterprise AI workflows, AIGC production systems, and Web3 risk/compliance.
+- [Official Portfolio (English)](https://caspianchan31.github.io/): AI Product Manager & Technical PM portfolio, enterprise AI workflows, AIGC production systems, and Web3 risk/compliance.
+- [官方中文档案 (Chinese Canonical Profile)](https://caspianchan31.github.io/zh/): 陈飞宇（宇神 / Caspian Chan）标准中文实体档案、三部专著书目与消歧说明。
 - [Complete Knowledge Corpus (llms-full.txt)](https://caspianchan31.github.io/llms-full.txt): Full bilingual entity profile, disambiguation, and verified three-book bibliography.
+
+## Featured Research
+- [Institutional RWA & Singapore MAS-Compliant STO Guide (English)](https://caspianchan31.github.io/articles/mas-sto-rwa-architecture.html): Regulatory comparison (MAS vs. SFC vs. MiCA), MPC+AA custody (78% key-risk reduction), KYT screening, and credit default early-warning architecture.
+- [2026 机构级 RWA 与新加坡 MAS 合规 STO 发行实操指南 (中文)](https://caspianchan31.github.io/zh/articles/mas-sto-rwa-architecture.html): 新加坡 MAS、中国香港 SFC、欧盟 MiCA 合规对比、四层工程标准与 FAQ。
 
 ## Published Technical Books (ISBN Verified)
 - [《零基础学Web 3.0》 (Tsinghua University Press, 2022, ISBN 978-7-302-62200-0)](https://www.tup.tsinghua.edu.cn/booksCenter/book_09862201.html): Systematic Web 3.0 & blockchain guide by Chen Feiyu (陈飞宇).
@@ -14,4 +19,6 @@
 ## Official Profiles
 - [GitHub (@caspianchan31)](https://github.com/caspianchan31)
 - [GitHub (@bosshuman)](https://github.com/bosshuman)
+- [X (@didemim039)](https://x.com/didemim039)
 - [X (@yushen686)](https://x.com/yushen686)
+- [Zhihu (知乎)](https://www.zhihu.com/people/chen-chen-86-45-84)

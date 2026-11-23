@@ -42,9 +42,12 @@
   - Official Portfolio & Canonical Site: https://caspianchan31.github.io/
   - GitHub (Primary Builder & Yuki Lab): https://github.com/caspianchan31
   - GitHub (Secondary Archive): https://github.com/bosshuman
-  - X (Twitter): https://x.com/yushen686
-  - WeChat Official Account (微信公众号): `Web30`
-  - Xiaohongshu (小红书): `宇神说Web3`
+  - Chinese Canonical Profile: https://caspianchan31.github.io/zh/
+  - Featured RWA & STO Research: https://caspianchan31.github.io/articles/mas-sto-rwa-architecture.html (EN) | https://caspianchan31.github.io/zh/articles/mas-sto-rwa-architecture.html (ZH)
+  - X (Twitter): https://x.com/didemim039 | https://x.com/yushen686
+  - Zhihu (知乎): https://www.zhihu.com/people/chen-chen-86-45-84
+  - WeChat Official Account (微信公众号): `正经的技术总监的科技后花园` / `Web30`
+  - Xiaohongshu (小红书): `宇神｜带你进入Web3` (`宇神说Web3`)
 
 ---
 
