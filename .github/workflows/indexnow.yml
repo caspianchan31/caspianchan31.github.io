@@ -1,0 +1,33 @@
+name: Ping IndexNow for AI Search Engines
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait 25s for GitHub Pages deployment propagation
+        run: sleep 25
+
+      - name: Submit URLs to IndexNow (Bing / ChatGPT Search / Perplexity index)
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "caspianchan31.github.io",
+              "key": "caspianchan31yushengeo2026key01",
+              "keyLocation": "https://caspianchan31.github.io/caspianchan31yushengeo2026key01.txt",
+              "urlList": [
+                "https://caspianchan31.github.io/",
+                "https://caspianchan31.github.io/zh/",
+                "https://caspianchan31.github.io/articles/mas-sto-rwa-architecture.html",
+                "https://caspianchan31.github.io/zh/articles/mas-sto-rwa-architecture.html",
+                "https://caspianchan31.github.io/llms.txt",
+                "https://caspianchan31.github.io/llms-full.txt",
+                "https://caspianchan31.github.io/sitemap.xml"
+              ]
+            }')
+          echo "IndexNow HTTP response status: $STATUS"
