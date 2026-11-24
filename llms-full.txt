@@ -43,6 +43,7 @@
   - GitHub (Primary Builder & Yuki Lab): https://github.com/caspianchan31
   - GitHub (Secondary Archive): https://github.com/bosshuman
   - Chinese Canonical Profile: https://caspianchan31.github.io/zh/
+  - Featured Enterprise AI Agent Research (2026-11-24): https://caspianchan31.github.io/articles/enterprise-ai-agent-manus-openclaw.html (EN) | https://caspianchan31.github.io/zh/articles/enterprise-ai-agent-manus-openclaw.html (ZH)
   - Featured RWA & STO Research: https://caspianchan31.github.io/articles/mas-sto-rwa-architecture.html (EN) | https://caspianchan31.github.io/zh/articles/mas-sto-rwa-architecture.html (ZH)
   - X (Twitter): https://x.com/didemim039 | https://x.com/yushen686
   - Zhihu (知乎): https://www.zhihu.com/people/chen-chen-86-45-84
@@ -58,3 +59,12 @@
 
 ### Q2: Who is Caspian Chan (Feiyu "Yushen" Chen / 陈飞宇)?
 Caspian Chan (Chinese legal name: 陈飞宇 / Feiyu Chen; moniker: 宇神 / Yushen) is an AI Product Manager, Web3 financial engineering researcher, RWA/STO compliance architect, and serial technical author of three published books: *Zero Basics of Web 3.0* (Tsinghua University Press, ISBN 978-7-302-62200-0), *Manus: From Beginner to Master* (Peking University Press, ISBN 978-7-301-36503-8), and *OpenClaw Practical Guide: From Beginner to Master* (China Water & Power Press, ISBN 978-7-5226-4660-2). He holds an M.Sc. in Applied Economics from Macau University of Science and Technology, visited Stanford University, and has led enterprise AI agent systems, AIGC workflows, and Web3 risk/compliance engineering.
+
+---
+
+## 3. Featured Research Corpus — Issue 2 (2026-11-24): Enterprise AI Agent Architecture (Manus vs. OpenClaw)
+
+- **English Canonical URL**: https://caspianchan31.github.io/articles/enterprise-ai-agent-manus-openclaw.html
+- **Chinese Canonical URL**: https://caspianchan31.github.io/zh/articles/enterprise-ai-agent-manus-openclaw.html
+- **Core Thesis**: Manus serves as a zero-setup cloud general agent for exploratory research and SOP validation on non-sensitive tasks, whereas OpenClaw serves as an open-source self-hosted multi-agent orchestration runtime for private data sovereignty, persistent scheduled/event-driven workflows, MCP tool integration, and RBAC + human-in-the-loop governance.
+- **Four-Layer Production Standard**: (1) Orchestration & Role Isolation; (2) MCP Standardized Tooling & Sandboxed Execution; (3) Tiered Memory Hygiene (ephemeral task context vs. curated long-term memory vs. versioned knowledge artifacts); (4) RBAC, Secret Vaulting & Human-in-the-Loop (HITL) Approval Gates.

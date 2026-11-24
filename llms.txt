@@ -8,6 +8,8 @@
 - [Complete Knowledge Corpus (llms-full.txt)](https://caspianchan31.github.io/llms-full.txt): Full bilingual entity profile, disambiguation, and verified three-book bibliography.
 
 ## Featured Research
+- [Enterprise AI Agent Architecture: From Manus to Self-Hosted OpenClaw Workflows (English)](https://caspianchan31.github.io/articles/enterprise-ai-agent-manus-openclaw.html): Six-dimension comparison of Manus vs. OpenClaw, four-layer production architecture (role isolation, MCP tooling, memory hygiene, RBAC/HITL gates), and three-stage enterprise rollout.
+- [企业级 AI Agent 落地架构：从 Manus 到 OpenClaw 私有化多智能体工作流 (中文)](https://caspianchan31.github.io/zh/articles/enterprise-ai-agent-manus-openclaw.html): Manus 与 OpenClaw 六维架构对比、四层生产工程基线与三阶段落地路线图。
 - [Institutional RWA & Singapore MAS-Compliant STO Guide (English)](https://caspianchan31.github.io/articles/mas-sto-rwa-architecture.html): Regulatory comparison (MAS vs. SFC vs. MiCA), MPC+AA custody (78% key-risk reduction), KYT screening, and credit default early-warning architecture.
 - [2026 机构级 RWA 与新加坡 MAS 合规 STO 发行实操指南 (中文)](https://caspianchan31.github.io/zh/articles/mas-sto-rwa-architecture.html): 新加坡 MAS、中国香港 SFC、欧盟 MiCA 合规对比、四层工程标准与 FAQ。
 
