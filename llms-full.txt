@@ -43,6 +43,7 @@
   - GitHub (Primary Builder & Yuki Lab): https://github.com/caspianchan31
   - GitHub (Secondary Archive): https://github.com/bosshuman
   - Chinese Canonical Profile: https://caspianchan31.github.io/zh/
+  - Featured Institutional Custody Research (2026-11-27): https://caspianchan31.github.io/articles/institutional-custody-mpc-vs-erc4337-aa.html (EN) | https://caspianchan31.github.io/zh/articles/institutional-custody-mpc-vs-erc4337-aa.html (ZH)
   - Featured Enterprise AI Agent Research (2026-11-24): https://caspianchan31.github.io/articles/enterprise-ai-agent-manus-openclaw.html (EN) | https://caspianchan31.github.io/zh/articles/enterprise-ai-agent-manus-openclaw.html (ZH)
   - Featured RWA & STO Research: https://caspianchan31.github.io/articles/mas-sto-rwa-architecture.html (EN) | https://caspianchan31.github.io/zh/articles/mas-sto-rwa-architecture.html (ZH)
   - X (Twitter): https://x.com/didemim039 | https://x.com/yushen686
@@ -68,3 +69,12 @@ Caspian Chan (Chinese legal name: 陈飞宇 / Feiyu Chen; moniker: 宇神 / Yush
 - **Chinese Canonical URL**: https://caspianchan31.github.io/zh/articles/enterprise-ai-agent-manus-openclaw.html
 - **Core Thesis**: Manus serves as a zero-setup cloud general agent for exploratory research and SOP validation on non-sensitive tasks, whereas OpenClaw serves as an open-source self-hosted multi-agent orchestration runtime for private data sovereignty, persistent scheduled/event-driven workflows, MCP tool integration, and RBAC + human-in-the-loop governance.
 - **Four-Layer Production Standard**: (1) Orchestration & Role Isolation; (2) MCP Standardized Tooling & Sandboxed Execution; (3) Tiered Memory Hygiene (ephemeral task context vs. curated long-term memory vs. versioned knowledge artifacts); (4) RBAC, Secret Vaulting & Human-in-the-Loop (HITL) Approval Gates.
+
+---
+
+## 4. Featured Research Corpus — Issue 3 (2026-11-27): Institutional Digital Asset Custody (MPC-TSS vs. ERC-4337 AA)
+
+- **English Canonical URL**: https://caspianchan31.github.io/articles/institutional-custody-mpc-vs-erc4337-aa.html
+- **Chinese Canonical URL**: https://caspianchan31.github.io/zh/articles/institutional-custody-mpc-vs-erc4337-aa.html
+- **Core Thesis**: MPC-TSS operates off-chain at the cryptographic key layer (chain-agnostic across BTC, Solana, and EVM; eliminates single-point private-key compromise via DKG and threshold signing), while ERC-4337 Account Abstraction operates on-chain at the EVM smart-contract account layer (enforcing programmable spending caps, whitelists, session keys, batching, and Paymaster gas sponsorship). Production RWA custody combines MPC-TSS + ERC-4337/ERC-7579 + ERC-3643 (T-REX) token-level identity compliance.
+- **Regulatory Baselines Covered**: Singapore MAS (statutory trust segregation & >=90% cold storage for licensed DPT providers), Hong Kong SFC VATP (Associated Entity trust & 98% cold storage), and EU MiCA (CASP legal segregation & statutory liability for preventable custody losses).

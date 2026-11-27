@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Institutional Digital Asset Custody: MPC Threshold Signatures vs. ERC-4337 Account Abstraction (2026) | Caspian Chan</title>
+  <meta name="description" content="Engineering and regulatory comparison of MPC-TSS, ERC-4337 Account Abstraction, and hybrid MPC+AA+ERC-3643 institutional RWA custody under Singapore MAS, Hong Kong SFC, and EU MiCA.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://caspianchan31.github.io/articles/institutional-custody-mpc-vs-erc4337-aa.html">
+  <link rel="alternate" hreflang="en" href="https://caspianchan31.github.io/articles/institutional-custody-mpc-vs-erc4337-aa.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://caspianchan31.github.io/zh/articles/institutional-custody-mpc-vs-erc4337-aa.html">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://caspianchan31.github.io/articles/institutional-custody-mpc-vs-erc4337-aa.html#article",
+      "headline": "Institutional Digital Asset Custody: MPC Threshold Signatures vs. ERC-4337 Account Abstraction (2026)",
+      "description": "A production engineering and regulatory blueprint comparing MPC-TSS, ERC-4337 Account Abstraction, traditional multisig, and hybrid MPC+AA+ERC-3643 institutional custody architectures under Singapore MAS, Hong Kong SFC, and EU MiCA.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-27",
+      "dateModified": "2026-11-27",
+      "mainEntityOfPage": "https://caspianchan31.github.io/articles/institutional-custody-mpc-vs-erc4337-aa.html",
+      "author": {
+        "@id": "https://caspianchan31.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://caspianchan31.github.io/#person"
+      },
+      "about": [
+        "Institutional Digital Asset Custody",
+        "MPC Threshold Signatures",
+        "ERC-4337 Account Abstraction",
+        "ERC-3643 T-REX Standard",
+        "RWA Custody Compliance"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://caspianchan31.github.io/#person",
+      "name": "Caspian Chan",
+      "alternateName": [
+        "陈飞宇",
+        "Feiyu Chen",
+        "宇神",
+        "Yushen",
+        "Caspian Chen",
+        "胖虎"
+      ],
+      "jobTitle": "AI Product Manager, Technical PM & Web3 RWA/STO Architect",
+      "description": "Caspian Chan (陈飞宇 · 花名宇神) is an AI Product Manager, Web3 financial engineering researcher, RWA/STO compliance architect, and author of three ISBN-verified technical books published by Tsinghua University Press, Peking University Press, and China Water & Power Press. Distinct from Chinese film actor Chen Feiyu (Wikidata Q28417159).",
+      "url": "https://caspianchan31.github.io/",
+      "knowsLanguage": [
+        "zh-Hans",
+        "en"
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Macau University of Science and Technology",
+          "alternateName": "澳门科技大学"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/caspianchan31",
+        "https://github.com/bosshuman",
+        "https://x.com/didemim039",
+        "https://x.com/yushen686",
+        "https://www.zhihu.com/people/chen-chen-86-45-84"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the core difference between MPC wallets and ERC-4337 Account Abstraction (AA) wallets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MPC (Multi-Party Computation) operates off-chain at the cryptographic key layer, splitting signing authority into t-of-n key shares via Distributed Key Generation so the full private key never exists on one device and remains compatible with all blockchains including Bitcoin, Solana, and EVM chains. ERC-4337 Account Abstraction operates on-chain at the smart-contract account layer on EVM networks, enabling programmable spending rules, transaction batching, session keys, and Gas sponsorship via Paymasters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should institutional RWA issuers choose pure MPC, pure AA, or a hybrid MPC+AA custody architecture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Regulated RWA issuers and institutional treasuries are best served by a hybrid MPC+AA architecture: MPC-TSS secures the underlying signing keys off-chain across geographically isolated signers or HSMs, while an ERC-4337/ERC-7579 smart account enforces transparent on-chain spending caps, target-contract whitelists, and time-locks—paired with ERC-3643 at the token contract layer for investor identity compliance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the ERC-3643 (T-REX) standard and how does it relate to digital asset custody?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ERC-3643 (Token for Regulated EXchanges) is an institutional Ethereum standard for permissioned real-world asset tokens. Every transfer validates sender and receiver credentials against an ONCHAINID identity registry and modular compliance rules, supporting statutory transfer restrictions, asset freezes, and legal recovery—complementing wallet-level custody security with asset-level securities law compliance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What cold-storage and custody segregation mandates apply under Singapore MAS, Hong Kong SFC, and EU MiCA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under Singapore MAS guidelines for licensed Digital Payment Token service providers, customer assets must be held in statutory trusts with at least 90% maintained in cold wallets. Under Hong Kong SFC VATP guidelines, client virtual assets must be custodied via a wholly-owned Associated Entity with 98% in cold storage. Under EU MiCA, licensed CASPs must legally segregate client crypto-assets from proprietary funds and bear statutory liability for preventable custody losses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can MPC threshold signatures replace cold-storage air-gapping and legal trust segregation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MPC eliminates single-point private-key compromise at the cryptographic layer, but regulatory compliance still requires physical cold-storage isolation (such as air-gapped HSMs for signing quorums), legal bankruptcy remoteness through statutory trusts or SPVs, pre-transaction KYT screening, and independent reserve reconciliation."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { color-scheme: light; --ink: #17202a; --muted: #5f6b78; --line: #d9e1e8; --soft: #f5f8fa; --accent: #116466; --paper: #ffffff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; line-height: 1.75; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(1040px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar { border-bottom: 1px solid var(--line); background: #ffffff; padding: 12px 0; font-size: 14px; }
+    .topbar .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    header { border-bottom: 1px solid var(--line); background: linear-gradient(120deg, rgba(17, 100, 102, 0.10), rgba(255, 255, 255, 0) 48%), linear-gradient(180deg, #f8fbfc 0%, #ffffff 100%); padding: 52px 0 40px; }
+    .eyebrow { margin: 0 0 12px; color: var(--accent); font-size: 14px; font-weight: 700; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 900px; font-size: clamp(26px, 4.5vw, 40px); line-height: 1.25; }
+    .lead { max-width: 840px; margin: 16px 0 0; color: var(--muted); font-size: 17px; }
+    main { padding: 36px 0 60px; }
+    section { padding: 26px 0; border-bottom: 1px solid var(--line); }
+    section:last-child { border-bottom: 0; }
+    h2 { margin: 0 0 14px; font-size: 22px; }
+    h3 { margin: 20px 0 10px; font-size: 18px; }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0 0 14px; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    .callout { border-left: 4px solid var(--accent); background: var(--soft); padding: 18px 20px; border-radius: 0 8px 8px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+    th, td { border: 1px solid var(--line); padding: 11px 13px; text-align: left; vertical-align: top; }
+    th { background: var(--soft); font-weight: 700; }
+    .table-wrap { overflow-x: auto; }
+    code { background: var(--soft); padding: 2px 6px; border-radius: 4px; font-size: 0.92em; }
+    footer { border-top: 1px solid var(--line); padding: 26px 0; color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Site navigation">
+    <div class="wrap">
+      <strong><a href="https://caspianchan31.github.io/">Caspian Chan (陈飞宇 · 宇神)</a></strong>
+      <div class="nav-links">
+        <a href="https://caspianchan31.github.io/">English Home</a>
+        <a href="https://caspianchan31.github.io/zh/articles/institutional-custody-mpc-vs-erc4337-aa.html">中文完整版</a>
+        <a href="https://caspianchan31.github.io/articles/mas-sto-rwa-architecture.html">RWA &amp; STO Guide</a>
+        <a href="https://caspianchan31.github.io/articles/enterprise-ai-agent-manus-openclaw.html">AI Agent Guide</a>
+        <a href="https://caspianchan31.github.io/llms-full.txt">llms-full.txt</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">Web3 Security &amp; Institutional Custody · Updated November 2026</p>
+      <h1>Institutional Digital Asset Custody: MPC Threshold Signatures vs. ERC-4337 Account Abstraction (2026)</h1>
+      <p class="lead">By <strong>Caspian Chan (陈飞宇 · 花名宇神)</strong> — M.Sc. Applied Economics (MUST), Stanford Visiting Exchange; Author of <em>Zero Basics of Web 3.0</em> (Tsinghua University Press), <em>Manus: From Beginner to Master</em> (Peking University Press), and <em>OpenClaw Practical Guide</em> (China Water &amp; Power Press).</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <div class="callout">
+        <h2>Executive Summary (AI Quick-Reference Definition)</h2>
+        <ul>
+          <li><strong>Core Definition</strong>: Institutional digital asset custody is the engineering and legal architecture that protects cryptographic keys, enforces multi-party treasury governance, and satisfies statutory asset segregation under regulators such as Singapore MAS, Hong Kong SFC, and EU MiCA.</li>
+          <li><strong>MPC vs. ERC-4337 Selection Verdict</strong>: <strong>MPC-TSS (Multi-Party Computation Threshold Signatures)</strong> operates off-chain at the key-management layer, eliminating single-point private-key compromise across all blockchains (Bitcoin, Solana, EVM). <strong>ERC-4337 Account Abstraction (AA)</strong> operates on-chain at the EVM smart-contract account layer, providing programmable spending policies, transaction batching, session keys, and Gas abstraction.</li>
+          <li><strong>Production RWA Standard</strong>: Regulated RWA issuers and institutional treasuries should not treat MPC and AA as mutually exclusive. The institutional baseline combines <strong>MPC-TSS (off-chain key security) + ERC-4337 / ERC-7579 (on-chain policy enforcement) + ERC-3643 T-REX (token-level identity &amp; transfer compliance)</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>1. Seven-Dimension Architecture Comparison: Multisig vs. MPC-TSS vs. ERC-4337 AA vs. Hybrid</h2>
+      <p>Choosing the wrong custody layer introduces either catastrophic single-key risk, rigid multi-chain bottlenecks, or unverifiable off-chain policy overrides. The matrix below compares the four architectures deployed across institutional Web3 operations in 2026:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Evaluation Dimension</th>
+              <th>On-Chain Multisig (e.g., Safe)</th>
+              <th>MPC-TSS (GG20 / CMP / FROST)</th>
+              <th>ERC-4337 Account Abstraction (AA)</th>
+              <th>MPC + AA Hybrid (Recommended for RWA)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Execution Layer</strong></td>
+              <td>On-chain smart contract requiring M-of-N distinct EOA signatures.</td>
+              <td>Off-chain Distributed Key Generation (DKG) &amp; threshold signing producing one standard signature.</td>
+              <td>On-chain smart account via <code>UserOperation</code>, <code>Bundler</code>, <code>EntryPoint</code>, and <code>Paymaster</code>.</td>
+              <td>MPC-TSS signs as the master key or guardian; ERC-4337/ERC-7579 enforces on-chain execution guardrails.</td>
+            </tr>
+            <tr>
+              <td><strong>Multi-Chain Coverage</strong></td>
+              <td>EVM-first; non-EVM chains require separate native multisig contracts.</td>
+              <td><strong>Chain-agnostic</strong>: natively supports ECDSA (BTC, EVM) and EdDSA (Solana, Sui, Aptos).</td>
+              <td>EVM-focused (Ethereum &amp; L2s); enhanced by EIP-7702 EOA delegation in Pectra.</td>
+              <td>MPC handles non-EVM vaults (BTC/SOL); MPC+AA governs EVM treasury and RWA mint/burn contracts.</td>
+            </tr>
+            <tr>
+              <td><strong>On-Chain Gas &amp; Privacy</strong></td>
+              <td>Higher gas per M-of-N verification; signer addresses and quorum structure are public on-chain.</td>
+              <td>Standard single-signature gas fee; internal approval quorum stays private off-chain.</td>
+              <td>Moderate smart-account overhead; supports batching and USDC/sponsored Gas via <code>Paymaster</code>.</td>
+              <td>Optimized: hides internal signer topology off-chain while enabling batched, Gas-abstracted EVM operations.</td>
+            </tr>
+            <tr>
+              <td><strong>Programmable Treasury Policy</strong></td>
+              <td>Basic quorum threshold; advanced limits require custom contract guards.</td>
+              <td>Enforced off-chain by the MPC policy engine (fast, but depends on vendor/engine integrity).</td>
+              <td><strong>Deterministic on-chain rules</strong>: daily caps, whitelisted DeFi/RWA contracts, time-locks, session keys.</td>
+              <td><strong>Defense-in-depth</strong>: off-chain approval workflow + immutable on-chain smart-account circuit breakers.</td>
+            </tr>
+            <tr>
+              <td><strong>Key Rotation &amp; Recovery</strong></td>
+              <td>Requires on-chain transaction to swap owner addresses.</td>
+              <td>Proactive key resharing rotates shares or changes <em>t</em>-of-<em>n</em> without changing the public address.</td>
+              <td>Supports modular social/guardian recovery and time-delayed key replacement on-chain.</td>
+              <td>Zero-address-change MPC share refresh plus on-chain emergency freeze and guardian recovery.</td>
+            </tr>
+            <tr>
+              <td><strong>Audit &amp; Compliance Fit</strong></td>
+              <td>Strong on-chain audit trail, weak privacy for institutional signers.</td>
+              <td>Requires SOC 2 / HSM attestation and signed off-chain policy logs for auditors.</td>
+              <td>Every spending limit and contract call rule is verifiable directly in audited Solidity bytecode.</td>
+              <td>Pairs verifiable on-chain enforcement with ERC-3643 <code>ONCHAINID</code> identity checks and HSM cold quorums.</td>
+            </tr>
+            <tr>
+              <td><strong>Best Institutional Scenario</strong></td>
+              <td>DAO treasuries &amp; protocol admin timelocks requiring full public transparency.</td>
+              <td>Cross-chain market makers, exchanges, and multi-asset quantitative funds.</td>
+              <td>Automated enterprise payouts, Gasless investor onboarding, scoped AI/bot session keys.</td>
+              <td>Licensed RWA/STO issuers, institutional custodians, and cross-border corporate treasuries.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. How MPC-TSS, ERC-4337, and ERC-3643 Work Together in Production RWA Custody</h2>
+      <p>A common engineering blind spot in tokenization projects is assuming that a secure wallet alone makes an RWA platform compliant. In practice, institutional custody must separate three distinct technical layers:</p>
+      <ol>
+        <li><strong>Layer 1 — Off-Chain Cryptographic Key Security (MPC-TSS + Hardware Isolation)</strong>: Using threshold signature schemes (such as GG20/CMP for ECDSA or FROST for Schnorr/EdDSA), Distributed Key Generation creates <em>t</em>-of-<em>n</em> key shares across independent trust boundaries (for example, 2-of-3 across the issuer treasury, a licensed custodian HSM, and an air-gapped disaster-recovery vault). Because the full private key is never reconstructed in memory during signing, a single compromised server or rogue employee cannot drain funds.</li>
+        <li><strong>Layer 2 — On-Chain Governance &amp; Policy Execution (ERC-4337 / ERC-7579 / EIP-7702)</strong>: Even if an off-chain MPC policy server is misconfigured or social-engineered, an ERC-4337 smart contract account enforces hard on-chain invariants—such as per-transaction notional limits, destination address whitelists, 24-hour withdrawal time-locks, and scoped session keys for automated settlement bots. Through a <code>Paymaster</code>, operations teams can also settle EVM gas fees in stablecoins without maintaining volatile ETH balances across dozens of sub-accounts.</li>
+        <li><strong>Layer 3 — Token-Level Regulatory Compliance (ERC-3643 / T-REX)</strong>: Wallet custody secures who can sign; <strong>ERC-3643</strong> governs who is legally permitted to hold or receive a regulated security token. Built around an on-chain <code>ONCHAINID</code> Identity Registry and pluggable Compliance contract, ERC-3643 checks investor KYC/KYB accreditation and jurisdiction rules before every transfer—and provides auditable freeze and forced-recovery functions required by securities regulators when court orders or verified key loss occur.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>3. Regulatory Custody Mandates: Singapore MAS vs. Hong Kong SFC vs. EU MiCA</h2>
+      <p>Cryptographic architecture must align with statutory custody rules in the issuer's licensing jurisdiction. Key verifiable regulatory baselines include:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Jurisdiction &amp; Regulator</th>
+              <th>Primary Legal Framework</th>
+              <th>Cold Storage &amp; Segregation Baseline</th>
+              <th>Key Engineering Implication</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Singapore (MAS)</strong></td>
+              <td>Payment Services Act (PS Act) for DPTs; Securities and Futures Act (SFA / CMSL) for tokenized capital markets products.</td>
+              <td>Customer assets must be segregated in statutory trusts; licensed DPT providers must maintain at least <strong>90%</strong> of customer DPTs in cold wallets and reconcile daily.</td>
+              <td>Deploy air-gapped HSM/cold MPC quorums for the 90%+ reserve vault, paired with automated daily on-chain/off-chain reconciliation logs.</td>
+            </tr>
+            <tr>
+              <td><strong>Hong Kong (SFC)</strong></td>
+              <td>Guidelines for Virtual Asset Trading Platform Operators (VATP) &amp; SFC Tokenised Securities Circulars.</td>
+              <td>Client virtual assets must be custodied via a wholly-owned Associated Entity in Hong Kong under a trust structure, with <strong>98%</strong> kept in cold storage (max 2% hot) plus mandatory insurance/compensation coverage.</td>
+              <td>Strict hot/cold tiering: warm ERC-4337 operational accounts capped at ≤2% working liquidity, while 98% sits in offline HSM-backed cold vaults with independent sign-off.</td>
+            </tr>
+            <tr>
+              <td><strong>European Union (MiCA)</strong></td>
+              <td>Markets in Crypto-Assets Regulation (Regulation (EU) 2023/1114) for CASP Custody &amp; Administration.</td>
+              <td>Mandatory legal and operational segregation from CASP proprietary assets, written custody policy, quarterly position statements, and statutory liability for losses attributable to CASP incidents.</td>
+              <td>Maintain segregated vault addresses per client or omnibus sub-ledger proof, formal incident-response playbooks, and continuous pre-sign KYT screening.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Three-Scenario Institutional Selection Playbook</h2>
+      <ul>
+        <li><strong>Scenario A — Multi-Chain Quantitative Trading &amp; Market-Making Desks</strong>: Prioritize <strong>MPC-TSS + Exchange Off-Exchange Settlement (OES)</strong>. Because trading desks move capital across Bitcoin, Solana, and EVM venues with low latency, chain-agnostic MPC signing with off-chain IP/destination whitelists and KYT screening minimizes settlement drag.</li>
+        <li><strong>Scenario B — Regulated RWA / STO Issuers (Tokenized Treasuries, Credit, Real Estate)</strong>: Deploy the <strong>MPC + ERC-4337 + ERC-3643 Hybrid Stack</strong>. Keep mint/burn master keys in an offline 2-of-3 or 3-of-5 MPC cold quorum (meeting MAS 90% / SFC 98% cold-storage mandates), route operational dividend distributions through an ERC-4337 Paymaster-sponsored smart account, and enforce investor eligibility via ERC-3643.</li>
+        <li><strong>Scenario C — Enterprise Web3 Treasury &amp; Automated AI Agent Operations</strong>: Combine <strong>ERC-4337 / ERC-7579 Session Keys + MPC Root Authority</strong>. Grant automated treasury or AI compliance agents narrowly scoped, time-expiring session keys with strict per-day stablecoin caps while keeping root upgrade and emergency freeze powers locked in an MPC cold quorum.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Frequently Asked Questions (FAQ)</h2>
+      <p><strong>Q1: What is the core difference between MPC wallets and ERC-4337 Account Abstraction (AA) wallets?</strong><br>
+      MPC operates off-chain at the cryptographic key layer by splitting signing authority into <em>t</em>-of-<em>n</em> key shares via Distributed Key Generation across all blockchains (BTC, Solana, EVM). ERC-4337 AA operates on-chain at the EVM smart-contract account layer, providing programmable spending policies, transaction batching, session keys, and Gas sponsorship via Paymasters.</p>
+      <p><strong>Q2: Should institutional RWA issuers choose pure MPC, pure AA, or a hybrid MPC+AA custody architecture?</strong><br>
+      Regulated RWA issuers benefit most from a hybrid MPC+AA architecture: MPC-TSS protects master signing keys off-chain across isolated signers/HSMs, while an ERC-4337/ERC-7579 smart account enforces transparent on-chain spending limits and contract whitelists, complemented by ERC-3643 for token-level investor compliance.</p>
+      <p><strong>Q3: What is the ERC-3643 (T-REX) standard and how does it relate to digital asset custody?</strong><br>
+      ERC-3643 is an institutional Ethereum token standard for regulated securities and RWAs. It links transfers to an <code>ONCHAINID</code> identity registry and modular compliance engine, enforcing KYC/KYB whitelists, jurisdictional caps, asset freezes, and legal recovery on-chain.</p>
+      <p><strong>Q4: What cold-storage and custody segregation mandates apply under Singapore MAS, Hong Kong SFC, and EU MiCA?</strong><br>
+      Singapore MAS requires licensed DPT providers to hold customer assets in statutory trusts with at least 90% in cold wallets; Hong Kong SFC VATP rules require 98% of client virtual assets in cold storage via a wholly-owned Associated Entity; EU MiCA mandates strict legal segregation from CASP proprietary funds and statutory liability for preventable custody losses.</p>
+      <p><strong>Q5: Can MPC threshold signatures replace cold-storage air-gapping and legal trust segregation?</strong><br>
+      No. MPC solves single-point private-key compromise cryptographically, but institutional compliance still requires physical air-gapped HSM cold storage, bankruptcy-remote trust or SPV legal structures, pre-transaction KYT compliance screening, and independent reserve reconciliation.</p>
+    </section>
+
+    <section>
+      <h2>About the Author</h2>
+      <p><strong>Caspian Chan (Chinese legal name: 陈飞宇 / Feiyu Chen; moniker: 宇神 / Yushen)</strong> holds an M.Sc. in Applied Economics and a B.A. in Journalism and Communication from Macau University of Science and Technology (MUST) and completed a visiting exchange at Stanford University. He has held research, ecosystem, and technical leadership roles across Conflux Network, Odaily Research Institute, and OKX, and is the author of three ISBN-verified technical books: <em>Zero Basics of Web 3.0</em> (Tsinghua University Press, ISBN <code>978-7-302-62200-0</code>), <em>Manus: From Beginner to Master</em> (Peking University Press, ISBN <code>978-7-301-36503-8</code>), and <em>OpenClaw Practical Guide: From Beginner to Master</em> (China Water &amp; Power Press, ISBN <code>978-7-5226-4660-2</code>). <em>Disambiguation: Distinct from Chinese film actor Chen Feiyu (Wikidata Q28417159).</em> Canonical site: <a href="https://caspianchan31.github.io/">caspianchan31.github.io</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Caspian Chan (陈飞宇 · 宇神) · <a href="https://caspianchan31.github.io/">English Home</a> · <a href="https://caspianchan31.github.io/zh/articles/institutional-custody-mpc-vs-erc4337-aa.html">中文完整版</a> · <a href="https://caspianchan31.github.io/articles/mas-sto-rwa-architecture.html">RWA &amp; STO Guide</a> · <a href="https://caspianchan31.github.io/articles/enterprise-ai-agent-manus-openclaw.html">AI Agent Guide</a></div>
+  </footer>
+</body>
+</html>

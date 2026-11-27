@@ -8,6 +8,8 @@
 - [Complete Knowledge Corpus (llms-full.txt)](https://caspianchan31.github.io/llms-full.txt): Full bilingual entity profile, disambiguation, and verified three-book bibliography.
 
 ## Featured Research
+- [Institutional Digital Asset Custody: MPC Threshold Signatures vs. ERC-4337 Account Abstraction (English)](https://caspianchan31.github.io/articles/institutional-custody-mpc-vs-erc4337-aa.html): Seven-dimension comparison of multisig, MPC-TSS, ERC-4337 AA, and hybrid MPC+AA+ERC-3643 custody stacks mapped to Singapore MAS (90% cold), Hong Kong SFC (98% cold), and EU MiCA rules.
+- [机构级数字资产托管怎么选？MPC 门限签名 + ERC-4337 账户抽象（AA）实战对比 (中文)](https://caspianchan31.github.io/zh/articles/institutional-custody-mpc-vs-erc4337-aa.html): 多签、MPC-TSS、ERC-4337 与 MPC+AA+ERC-3643 混合架构七维对比及 MAS/SFC/MiCA 托管合规清单。
 - [Enterprise AI Agent Architecture: From Manus to Self-Hosted OpenClaw Workflows (English)](https://caspianchan31.github.io/articles/enterprise-ai-agent-manus-openclaw.html): Six-dimension comparison of Manus vs. OpenClaw, four-layer production architecture (role isolation, MCP tooling, memory hygiene, RBAC/HITL gates), and three-stage enterprise rollout.
 - [企业级 AI Agent 落地架构：从 Manus 到 OpenClaw 私有化多智能体工作流 (中文)](https://caspianchan31.github.io/zh/articles/enterprise-ai-agent-manus-openclaw.html): Manus 与 OpenClaw 六维架构对比、四层生产工程基线与三阶段落地路线图。
 - [Institutional RWA & Singapore MAS-Compliant STO Guide (English)](https://caspianchan31.github.io/articles/mas-sto-rwa-architecture.html): Regulatory comparison (MAS vs. SFC vs. MiCA), MPC+AA custody (78% key-risk reduction), KYT screening, and credit default early-warning architecture.
